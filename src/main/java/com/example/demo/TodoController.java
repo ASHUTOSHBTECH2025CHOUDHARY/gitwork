@@ -31,4 +31,9 @@ public class TodoController {
                 .findFirst()
                 .orElse(null);
     }
+
+    @DeleteMapping("/{id}")
+    public boolean deleteTodo(@PathVariable Long id) {
+        return todos.removeIf(todo -> todo.getId().equals(id));
+    }
 }
