@@ -18,4 +18,17 @@ public class TodoController {
         todos.add(todo);
         return todo;
     }
+
+    @GetMapping
+    public List<Todo> getAllTodos() {
+        return todos;
+    }
+
+    @GetMapping("/{id}")
+    public Todo getTodoById(@PathVariable Long id) {
+        return todos.stream()
+                .filter(todo -> todo.getId().equals(id))
+                .findFirst()
+                .orElse(null);
+    }
 }
